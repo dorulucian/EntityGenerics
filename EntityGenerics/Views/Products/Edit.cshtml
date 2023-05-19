@@ -1,0 +1,46 @@
+﻿@model EntityGenerics.Application.ViewModels.ProductViewModel
+
+@{
+    ViewData["Title"] = "Product Create";
+}
+
+<h1>Edit</h1>
+<hr  />
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-12">
+            <form asp-action="Edit">
+                <input type="hidden" asp-for="@Model.Product.Id" />
+                <input type="hidden" asp-for="@Model.Product.InsertDateTime" />
+                <input type="hidden" asp-for="@Model.Product.IsDeleted" />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group col-md-4">
+                    <label asp-for="Product.Name" class="control-label font-weight-bold"></label>
+                    <input asp-for="Product.Name" class="form-control" />
+                    <span asp-validation-for="Product.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="Product.Description" class="control-label font-weight-bold"></label>
+                    <input asp-for="Product.Description" class="form-control" />
+                    <span asp-validation-for="Product.Description" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="Product.ShelfId" class="control-label"></label>
+                    <select asp-for="Product.ShelfId" class="form-control" asp-items="ViewBag.Shelves"></select>
+                    <span asp-validation-for="Product.ShelfId" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="Product.CategoryId" class="control-label"></label>
+                    <select asp-for="Product.CategoryId" class="form-control" asp-items="ViewBag.Categories"></select>
+                    <span asp-validation-for="Product.CategoryId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

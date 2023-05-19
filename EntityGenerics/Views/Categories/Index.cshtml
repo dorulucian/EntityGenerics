@@ -1,0 +1,28 @@
+﻿@model EntityGenerics.Application.ViewModels.CategoryViewModel
+
+@{
+    ViewData["Title"] = "Categories";
+}
+
+<h1>Index</h1>
+<p>
+    <a class="btn btn-primary" asp-action="Create">Create New</a>
+</p>
+<div class="container">
+    @foreach (var item in Model.Categories)
+    {
+        <div class="row col-md-12">
+            <div class="col-md-2">
+                <span>@item.Name</span>
+            </div>
+
+            <div class="col-md-4">
+                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                <form asp-action="Delete" method="post">
+                    <input type="hidden" asp-for="@item.Id" />
+                    <button type="submit" class="btn btn-secondary">Delete</button>
+                </form>
+            </div>
+        </div>
+    }
+</div>
